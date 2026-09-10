@@ -26,7 +26,7 @@ const PAGES = [
     out: 'productos.html',
     title: 'Catálogo de equipos | GII Médicas',
     description: 'Escáneres NLS, biorresonancia, iridoscopios y sistemas de desintoxicación. Catálogo completo con ficha técnica y cotización directa por WhatsApp.',
-    ogImage: 'assets/img/bioplasm-10d.jpg',
+    ogImage: 'assets/img/bioplasm-10d-v2.jpg',
   },
   {
     slug: 'nosotros',
