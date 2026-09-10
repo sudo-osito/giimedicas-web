@@ -1,17 +1,68 @@
-<!-- ===== Hero ===== -->
-<section class="hero" id="inicio">
-  <img class="hero__media" src="assets/img/banner/hero-portada.jpg" width="1916" height="821" alt="" aria-hidden="true" fetchpriority="high">
-  <div class="hero__velo"></div>
-  <div class="contenedor hero__rejilla">
-    <div class="hero__contenido">
-      <span class="hero__insignia"><i aria-hidden="true"></i> Importación directa · EE. UU. y China</span>
-      <h1>Somos líderes en <em>equipos médicos alternativos</em></h1>
-      <p>Más de 15 años suministrando biorresonancia, escáneres NLS, iridoscopios y sistemas de desintoxicación a terapeutas y distribuidores de toda Latinoamérica.</p>
-      <div class="hero__acciones">
-        <a class="btn btn--wa" href="https://wa.me/573116891425?text=Hola%2C%20quiero%20cotizar%20un%20equipo" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ico-wa"/></svg> Escribir por WhatsApp</a>
-        <a class="btn btn--fantasma" href="#productos">Ver catálogo</a>
+<!-- ===== Hero (carrusel) ===== -->
+<section class="hero" id="inicio" aria-roledescription="carrusel" aria-label="Presentación de GII Médicas">
+  <div class="hero__pista" id="hero-pista">
+
+    <article class="hero__lamina es-activa" role="group" aria-roledescription="diapositiva" aria-label="1 de 3">
+      <img class="hero__media" src="assets/img/banner/hero-portada.jpg" width="1916" height="821" alt="" aria-hidden="true" fetchpriority="high">
+      <div class="hero__velo"></div>
+      <div class="contenedor hero__rejilla">
+        <div class="hero__contenido">
+          <span class="hero__insignia"><i aria-hidden="true"></i> Importación directa · EE. UU. y China</span>
+          <h1>Somos líderes en <em>equipos médicos alternativos</em></h1>
+          <p>Más de 15 años suministrando biorresonancia, escáneres NLS, iridoscopios y sistemas de desintoxicación a terapeutas y distribuidores de toda Latinoamérica.</p>
+          <div class="hero__acciones">
+            <a class="btn btn--wa" href="https://wa.me/573116891425?text=Hola%2C%20quiero%20cotizar%20un%20equipo" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ico-wa"/></svg> Escribir por WhatsApp</a>
+            <a class="btn btn--fantasma" href="#productos">Ver catálogo</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </article>
+
+    <article class="hero__lamina" role="group" aria-roledescription="diapositiva" aria-label="2 de 3" aria-hidden="true">
+      <img class="hero__media" src="assets/img/banner/fondo-biophilia-tracker.jpg" width="1400" height="700" alt="" aria-hidden="true" loading="lazy">
+      <div class="hero__velo"></div>
+      <div class="contenedor hero__rejilla">
+        <div class="hero__contenido">
+          <span class="hero__insignia"><i aria-hidden="true"></i> Equipo insignia · Línea Biophilia</span>
+          <h2>Biophilia Tracker, <em>nuestro modelo más completo</em></h2>
+          <p>Electrodo cilíndrico de mano, tres canales independientes y control de intensidad en el panel frontal: el equipo de biorresonancia que más rota entre nuestros distribuidores.</p>
+          <div class="hero__acciones">
+            <a class="btn btn--wa" href="https://wa.me/573116891425?text=Hola%2C%20quiero%20cotizar%20el%20Biophilia%20Tracker" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ico-wa"/></svg> Cotizar el Biophilia Tracker</a>
+            <a class="btn btn--fantasma" href="#productos">Ver catálogo</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="hero__lamina" role="group" aria-roledescription="diapositiva" aria-label="3 de 3" aria-hidden="true">
+      <img class="hero__media" src="assets/img/banner/fondo-bioplasm-nls.jpg" width="1400" height="700" alt="" aria-hidden="true" loading="lazy">
+      <div class="hero__velo"></div>
+      <div class="contenedor hero__rejilla">
+        <div class="hero__contenido">
+          <span class="hero__insignia"><i aria-hidden="true"></i> Cobertura regional</span>
+          <h2>Enviamos a <em>toda Latinoamérica</em></h2>
+          <p>Despachamos por transportadora y courier internacional con guía de rastreo, a precio de mayorista y sin intermediarios entre la fábrica y usted.</p>
+          <div class="hero__acciones">
+            <a class="btn btn--wa" href="https://wa.me/573116891425?text=Hola%2C%20quiero%20cotizar%20un%20env%C3%ADo%20a%20mi%20pa%C3%ADs" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ico-wa"/></svg> Cotizar mi envío</a>
+            <a class="btn btn--fantasma" href="#productos">Ver catálogo</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <button class="hero__flecha hero__flecha--prev" id="hero-prev" type="button" aria-label="Diapositiva anterior">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <button class="hero__flecha hero__flecha--next" id="hero-next" type="button" aria-label="Diapositiva siguiente">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg>
+  </button>
+
+  <div class="hero__puntos" id="hero-puntos" role="tablist" aria-label="Elegir diapositiva">
+    <button class="hero__punto es-activo" type="button" role="tab" aria-selected="true"  aria-label="Diapositiva 1"></button>
+    <button class="hero__punto" type="button" role="tab" aria-selected="false" aria-label="Diapositiva 2"></button>
+    <button class="hero__punto" type="button" role="tab" aria-selected="false" aria-label="Diapositiva 3"></button>
   </div>
 </section>
 

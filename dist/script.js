@@ -54,6 +54,96 @@
     window.addEventListener('scroll', actualizarNav, { passive: true });
   }
 
+  /* ==========================================================
+     Hero (carrusel)
+     ========================================================== */
+  var pistaHero = document.getElementById('hero-pista');
+
+  if (pistaHero) {
+    var laminasHero = Array.prototype.slice.call(pistaHero.querySelectorAll('.hero__lamina'));
+    var puntosHero  = Array.prototype.slice.call(document.querySelectorAll('.hero__punto'));
+    var actualHero  = 0;
+    var temporizadorHero = null;
+    var INTERVALO_HERO = 6500;
+
+    function mostrarHero(indice) {
+      actualHero = (indice + laminasHero.length) % laminasHero.length;
+
+      laminasHero.forEach(function (lamina, i) {
+        var activa = i === actualHero;
+        lamina.classList.toggle('es-activa', activa);
+        lamina.setAttribute('aria-hidden', String(!activa));
+        lamina.querySelectorAll('a').forEach(function (a) {
+          a.tabIndex = activa ? 0 : -1;
+        });
+      });
+
+      puntosHero.forEach(function (punto, i) {
+        punto.classList.toggle('es-activo', i === actualHero);
+        punto.setAttribute('aria-selected', String(i === actualHero));
+      });
+    }
+
+    function avanzarHero()   { mostrarHero(actualHero + 1); }
+    function retrocederHero(){ mostrarHero(actualHero - 1); }
+
+    function arrancarHero() {
+      if (sinMovimiento || laminasHero.length < 2) return;
+      detenerHero();
+      temporizadorHero = window.setInterval(avanzarHero, INTERVALO_HERO);
+    }
+    function detenerHero() {
+      if (temporizadorHero) { window.clearInterval(temporizadorHero); temporizadorHero = null; }
+    }
+    function reiniciarHero() { detenerHero(); arrancarHero(); }
+
+    var siguienteHero = document.getElementById('hero-next');
+    var anteriorHero  = document.getElementById('hero-prev');
+
+    if (siguienteHero) siguienteHero.addEventListener('click', function () { avanzarHero(); reiniciarHero(); });
+    if (anteriorHero)  anteriorHero.addEventListener('click',  function () { retrocederHero(); reiniciarHero(); });
+
+    puntosHero.forEach(function (punto, i) {
+      punto.addEventListener('click', function () { mostrarHero(i); reiniciarHero(); });
+    });
+
+    var hero = document.querySelector('.hero');
+    if (hero) {
+      hero.addEventListener('mouseenter', detenerHero);
+      hero.addEventListener('mouseleave', arrancarHero);
+      hero.addEventListener('focusin', detenerHero);
+      hero.addEventListener('focusout', arrancarHero);
+
+      hero.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { avanzarHero(); reiniciarHero(); }
+        if (e.key === 'ArrowLeft')  { retrocederHero(); reiniciarHero(); }
+      });
+
+      var inicioXHero = 0, inicioYHero = 0;
+      hero.addEventListener('touchstart', function (e) {
+        inicioXHero = e.changedTouches[0].clientX;
+        inicioYHero = e.changedTouches[0].clientY;
+        detenerHero();
+      }, { passive: true });
+
+      hero.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - inicioXHero;
+        var dy = e.changedTouches[0].clientY - inicioYHero;
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) avanzarHero(); else retrocederHero();
+        }
+        arrancarHero();
+      }, { passive: true });
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) detenerHero(); else arrancarHero();
+    });
+
+    mostrarHero(0);
+    arrancarHero();
+  }
+
   /* ---------- Filtro de productos ---------- */
   var filtros = document.getElementById('filtros');
   var tarjetas = Array.prototype.slice.call(document.querySelectorAll('.producto[data-categoria]'));

@@ -86,20 +86,71 @@
 </header>
 
 <main>
-<!-- ===== Hero ===== -->
-<section class="hero" id="inicio">
-  <img class="hero__media" src="assets/img/banner/hero-portada.jpg" width="1916" height="821" alt="" aria-hidden="true" fetchpriority="high">
-  <div class="hero__velo"></div>
-  <div class="contenedor hero__rejilla">
-    <div class="hero__contenido">
-      <span class="hero__insignia"><i aria-hidden="true"></i> Importación directa · EE. UU. y China</span>
-      <h1>Somos líderes en <em>equipos médicos alternativos</em></h1>
-      <p>Más de 15 años suministrando biorresonancia, escáneres NLS, iridoscopios y sistemas de desintoxicación a terapeutas y distribuidores de toda Latinoamérica.</p>
-      <div class="hero__acciones">
-        <a class="btn btn--wa" href="https://wa.me/573116891425?text=Hola%2C%20quiero%20cotizar%20un%20equipo" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ico-wa"/></svg> Escribir por WhatsApp</a>
-        <a class="btn btn--fantasma" href="#productos">Ver catálogo</a>
+<!-- ===== Hero (carrusel) ===== -->
+<section class="hero" id="inicio" aria-roledescription="carrusel" aria-label="Presentación de GII Médicas">
+  <div class="hero__pista" id="hero-pista">
+
+    <article class="hero__lamina es-activa" role="group" aria-roledescription="diapositiva" aria-label="1 de 3">
+      <img class="hero__media" src="assets/img/banner/hero-portada.jpg" width="1916" height="821" alt="" aria-hidden="true" fetchpriority="high">
+      <div class="hero__velo"></div>
+      <div class="contenedor hero__rejilla">
+        <div class="hero__contenido">
+          <span class="hero__insignia"><i aria-hidden="true"></i> Importación directa · EE. UU. y China</span>
+          <h1>Somos líderes en <em>equipos médicos alternativos</em></h1>
+          <p>Más de 15 años suministrando biorresonancia, escáneres NLS, iridoscopios y sistemas de desintoxicación a terapeutas y distribuidores de toda Latinoamérica.</p>
+          <div class="hero__acciones">
+            <a class="btn btn--wa" href="https://wa.me/573116891425?text=Hola%2C%20quiero%20cotizar%20un%20equipo" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ico-wa"/></svg> Escribir por WhatsApp</a>
+            <a class="btn btn--fantasma" href="#productos">Ver catálogo</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </article>
+
+    <article class="hero__lamina" role="group" aria-roledescription="diapositiva" aria-label="2 de 3" aria-hidden="true">
+      <img class="hero__media" src="assets/img/banner/fondo-biophilia-tracker.jpg" width="1400" height="700" alt="" aria-hidden="true" loading="lazy">
+      <div class="hero__velo"></div>
+      <div class="contenedor hero__rejilla">
+        <div class="hero__contenido">
+          <span class="hero__insignia"><i aria-hidden="true"></i> Equipo insignia · Línea Biophilia</span>
+          <h2>Biophilia Tracker, <em>nuestro modelo más completo</em></h2>
+          <p>Electrodo cilíndrico de mano, tres canales independientes y control de intensidad en el panel frontal: el equipo de biorresonancia que más rota entre nuestros distribuidores.</p>
+          <div class="hero__acciones">
+            <a class="btn btn--wa" href="https://wa.me/573116891425?text=Hola%2C%20quiero%20cotizar%20el%20Biophilia%20Tracker" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ico-wa"/></svg> Cotizar el Biophilia Tracker</a>
+            <a class="btn btn--fantasma" href="#productos">Ver catálogo</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="hero__lamina" role="group" aria-roledescription="diapositiva" aria-label="3 de 3" aria-hidden="true">
+      <img class="hero__media" src="assets/img/banner/fondo-bioplasm-nls.jpg" width="1400" height="700" alt="" aria-hidden="true" loading="lazy">
+      <div class="hero__velo"></div>
+      <div class="contenedor hero__rejilla">
+        <div class="hero__contenido">
+          <span class="hero__insignia"><i aria-hidden="true"></i> Cobertura regional</span>
+          <h2>Enviamos a <em>toda Latinoamérica</em></h2>
+          <p>Despachamos por transportadora y courier internacional con guía de rastreo, a precio de mayorista y sin intermediarios entre la fábrica y usted.</p>
+          <div class="hero__acciones">
+            <a class="btn btn--wa" href="https://wa.me/573116891425?text=Hola%2C%20quiero%20cotizar%20un%20env%C3%ADo%20a%20mi%20pa%C3%ADs" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ico-wa"/></svg> Cotizar mi envío</a>
+            <a class="btn btn--fantasma" href="#productos">Ver catálogo</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <button class="hero__flecha hero__flecha--prev" id="hero-prev" type="button" aria-label="Diapositiva anterior">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <button class="hero__flecha hero__flecha--next" id="hero-next" type="button" aria-label="Diapositiva siguiente">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg>
+  </button>
+
+  <div class="hero__puntos" id="hero-puntos" role="tablist" aria-label="Elegir diapositiva">
+    <button class="hero__punto es-activo" type="button" role="tab" aria-selected="true"  aria-label="Diapositiva 1"></button>
+    <button class="hero__punto" type="button" role="tab" aria-selected="false" aria-label="Diapositiva 2"></button>
+    <button class="hero__punto" type="button" role="tab" aria-selected="false" aria-label="Diapositiva 3"></button>
   </div>
 </section>
 
@@ -141,7 +192,7 @@
       <article class="producto revelar" data-categoria="nls">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/bioplasm-10d.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/bioplasm-10d.jpg" width="521" height="1130" loading="lazy"
                  alt="Escáner bio molecular Bioplasm 10D NLS">
             <span class="producto__cinta">Más vendido</span>
             <span class="producto__lupa">Ver ficha completa</span>
@@ -171,7 +222,7 @@
       <article class="producto revelar" data-categoria="nls">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/metatron-hunter.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/metatron-hunter.jpg" width="1200" height="900" loading="lazy"
                  alt="Metatron Hunter, sistema no lineal con audífonos y sensor">
             <span class="producto__lupa">Ver ficha completa</span>
           </span>
@@ -199,7 +250,7 @@
       <article class="producto revelar" data-categoria="nls">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/meta-hunter-gold.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/meta-hunter-gold.jpg" width="1200" height="900" loading="lazy"
                  alt="Meta Hunter dorado, escáner de sistema no lineal con accesorios">
             <span class="producto__lupa">Ver ficha completa</span>
           </span>
@@ -227,7 +278,7 @@
       <article class="producto revelar" data-categoria="nls">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/meta-hunter-silver.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/meta-hunter-silver.jpg" width="1200" height="900" loading="lazy"
                  alt="Meta Hunter plateado, sistema no lineal con accesorios">
             <span class="producto__lupa">Ver ficha completa</span>
           </span>
@@ -255,7 +306,7 @@
       <article class="producto revelar" data-categoria="biorresonancia">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/biophilia-tracker.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/biophilia-tracker.jpg" width="1200" height="900" loading="lazy"
                  alt="Biophilia Tracker con electrodo cilíndrico, audífonos y sensor">
             <span class="producto__lupa">Ver ficha completa</span>
           </span>
@@ -283,7 +334,7 @@
       <article class="producto revelar" data-categoria="biorresonancia">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/biophilia-guardian.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/biophilia-guardian.jpg" width="1200" height="900" loading="lazy"
                  alt="Biophilia Guardian con banda corporal y sensor">
             <span class="producto__lupa">Ver ficha completa</span>
           </span>
@@ -311,7 +362,7 @@
       <article class="producto revelar" data-categoria="biorresonancia">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/biophilia-intruder.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/biophilia-intruder.jpg" width="1200" height="900" loading="lazy"
                  alt="Biophilia Intruder con chasis disipador, audífonos y sensor">
             <span class="producto__lupa">Ver ficha completa</span>
           </span>
@@ -339,7 +390,7 @@
       <article class="producto revelar" data-categoria="biorresonancia">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/bioplasm-nls.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/bioplasm-nls.jpg" width="1200" height="900" loading="lazy"
                  alt="Bioplasm NLS Technology con audífonos, sensor y memorias USB">
             <span class="producto__lupa">Ver ficha completa</span>
           </span>
@@ -367,7 +418,7 @@
       <article class="producto revelar" data-categoria="nls">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/nls-technology.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/nls-technology.jpg" width="1200" height="900" loading="lazy"
                  alt="Equipo NLS Technology con audífonos, sensor y memorias USB">
             <span class="producto__lupa">Ver ficha completa</span>
           </span>
@@ -395,7 +446,7 @@
       <article class="producto revelar" data-categoria="diagnostico">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/iridoscopio-12mp.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/iridoscopio-12mp.jpg" width="480" height="446" loading="lazy"
                  alt="Iridoscopio digital de 12 megapíxeles con enfoque automático">
             <span class="producto__lupa">Ver ficha completa</span>
           </span>
@@ -423,7 +474,7 @@
       <article class="producto revelar" data-categoria="terapia">
         <button class="producto__disparador" type="button">
           <span class="producto__media">
-            <img src="assets/img/desintoxicador-ionico.jpg" width="1200" height="1200" loading="lazy"
+            <img src="assets/img/desintoxicador-ionico.jpg" width="540" height="560" loading="lazy"
                  alt="Desintoxicador iónico con doble pantalla">
             <span class="producto__lupa">Ver ficha completa</span>
           </span>
