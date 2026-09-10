@@ -155,11 +155,13 @@ function build() {
   const headerTpl = fs.readFileSync(path.join(PARTIALS_DIR, 'header.html'), 'utf8');
   const footerTpl = fs.readFileSync(path.join(PARTIALS_DIR, 'footer.html'), 'utf8');
   const catalogoTpl = fs.readFileSync(path.join(PARTIALS_DIR, 'catalogo.html'), 'utf8');
+  const videoTpl = fs.readFileSync(path.join(PARTIALS_DIR, 'video.html'), 'utf8');
 
   for (const page of PAGES) {
     const bodyPath = path.join(CONTENT_DIR, page.file);
     let body = fs.readFileSync(bodyPath, 'utf8');
     body = body.replace('<!--CATALOGO-->', catalogoTpl);
+    body = body.replace('<!--VIDEO-->', videoTpl);
     const header = withNavActive(headerTpl, page.slug);
 
     const html = buildHead(page) + header + body + footerTpl + '\n</body>\n</html>\n';
