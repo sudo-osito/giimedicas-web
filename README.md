@@ -18,10 +18,18 @@ footer compartidos con el contenido propio de cada una.
 ```
 partials/header.html   Encabezado + nav + <main> de apertura (compartido)
 partials/footer.html   </main> + pie + botón flotante + <script> (compartido)
+partials/catalogo.html Filtros + las 11 fichas + modal (compartido entre inicio y productos)
 content/*.html         Cuerpo de cada página, sin head/header/footer
 build.js               Arma cada página final y la escribe en /dist
-dist/                  Salida del build — esto es lo que se publica (generado, no se versiona)
+dist/                  Salida del build — esto es lo que se publica
 ```
+
+⚠️ **`dist/` está commiteado a propósito**, aunque es un artefacto generado.
+El proyecto de Cloudflare (Workers Builds) no ejecuta ningún "build command"
+salvo que se configure explícitamente en el dashboard, así que si `dist/` no
+viene ya armado en el repo, `wrangler` no encuentra qué publicar. Después de
+tocar `content/`, `partials/` o `styles.css`/`script.js`, hay que correr
+`node build.js` **y commitear el `dist/` actualizado** antes de pushear.
 
 Páginas: `inicio.html` → `index.html`, `productos.html`, `nosotros.html`,
 `como-comprar.html`, `terminos.html`, `contacto.html`. El nav activo
@@ -82,17 +90,23 @@ mismos archivos.
 
 El proyecto en Cloudflare es un **Worker con assets estáticos** (Workers Builds),
 no un Pages clásico — por eso corre `npx wrangler versions upload` en vez de un
-build command + output directory. `wrangler.jsonc` le dice a wrangler que suba
-`./dist` como sitio estático (sin código de Worker), y `package.json` expone
-`npm run build` → `node build.js`.
+build command + output directory clásico. `wrangler.jsonc` le dice a wrangler
+que suba `./dist` como sitio estático (sin código de Worker).
 
-Para que un deploy quede realmente en vivo en `giimedicas.com` (no solo como
-versión de preview), en el dashboard del Worker (Settings → Build):
-- **Production branch**: `max`.
-- **Build command**: `npm run build` (o `node build.js`).
-- **Deploy command** para la production branch: `npx wrangler deploy` — si queda
-  en `npx wrangler versions upload`, cada push solo genera una versión de
-  preview y el sitio publicado no se actualiza.
+Workers Builds solo ejecuta `bun install`/`npm install` y el deploy command —
+**no corre ningún build automáticamente** salvo que se configure en el
+dashboard. Por eso `dist/` va commiteado al repo (ver arriba): así el deploy
+funciona aunque nunca se configure un build command ahí.
+
+Independiente de lo anterior, para que un deploy quede realmente en vivo en
+`giimedicas.com` (y no solo como versión de preview), en el dashboard del
+Worker (Settings → Build) el **deploy command de la production branch** debe
+ser `npx wrangler deploy` — si queda en `npx wrangler versions upload`, cada
+push solo genera una versión de preview y el sitio publicado no se actualiza.
+
+Si en algún momento se quiere volver a un build real en CI (y dejar de
+commitear `dist/`), ahí mismo se puede configurar un **Build command**:
+`npm run build` (o `node build.js`).
 
 ## Aviso
 
