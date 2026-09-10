@@ -1,0 +1,114 @@
+<!-- ===== Contacto ===== -->
+<section class="seccion" id="contacto">
+  <div class="contenedor">
+    <div class="encabezado encabezado--centro revelar">
+      <span class="etiqueta">Contáctenos</span>
+      <h1>Pida su cotización</h1>
+      <p>Respondemos el mismo día hábil. Cuéntenos qué equipo le interesa y para qué lo va a usar.</p>
+    </div>
+
+    <div class="contacto">
+      <div class="datos revelar">
+        <div class="dato">
+          <span class="dato__icono" aria-hidden="true"><svg><use href="#ico-tel"/></svg></span>
+          <div><h3>Teléfono y WhatsApp</h3><a href="tel:+573116891425">+57 311 689 1425</a></div>
+        </div>
+
+        <div class="dato">
+          <span class="dato__icono" aria-hidden="true"><svg><use href="#ico-mail"/></svg></span>
+          <div><h3>Correo electrónico</h3><a href="mailto:drchristianpedraza@gmail.com">drchristianpedraza@gmail.com</a></div>
+        </div>
+
+        <div class="dato">
+          <span class="dato__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><h3>Cobertura</h3><span>Toda Latinoamérica · Empresa 100% virtual</span></div>
+        </div>
+
+        <div class="dato">
+          <span class="dato__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+          <div><h3>Horario de atención</h3><span>Lunes a viernes 8:00 a.m. – 6:00 p.m. · Sábados 9:00 a.m. – 1:00 p.m. (hora de Colombia, GMT-5)</span></div>
+        </div>
+
+        <a class="btn btn--wa" href="https://wa.me/573116891425?text=Hola%2C%20quiero%20cotizar%20un%20equipo" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ico-wa"/></svg> Abrir chat de WhatsApp</a>
+      </div>
+
+      <form class="formulario revelar" id="formulario" novalidate>
+        <div class="campo campo--doble">
+          <div>
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="telefono">Teléfono / WhatsApp *</label>
+            <input type="tel" id="telefono" name="telefono" autocomplete="tel" required>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" autocomplete="email">
+        </div>
+
+        <div class="campo campo--doble">
+          <div>
+            <label for="pais">País *</label>
+            <select id="pais" name="pais" required>
+              <option value="">Seleccione su país</option>
+              <option>Colombia</option>
+              <option>México</option>
+              <option>Perú</option>
+              <option>Chile</option>
+              <option>Argentina</option>
+              <option>Ecuador</option>
+              <option>Bolivia</option>
+              <option>Venezuela</option>
+              <option>Panamá</option>
+              <option>Costa Rica</option>
+              <option>Guatemala</option>
+              <option>El Salvador</option>
+              <option>Honduras</option>
+              <option>Nicaragua</option>
+              <option>República Dominicana</option>
+              <option>Uruguay</option>
+              <option>Paraguay</option>
+              <option>Estados Unidos</option>
+              <option>España</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div>
+            <label for="ciudad">Ciudad</label>
+            <input type="text" id="ciudad" name="ciudad" autocomplete="address-level2">
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="equipo">Equipo de interés</label>
+          <select id="equipo" name="equipo">
+            <option value="">Seleccione una opción</option>
+            <option>Bioplasm 10D NLS</option>
+            <option>Metatron Hunter</option>
+            <option>Meta Hunter Gold</option>
+            <option>Meta Hunter Silver</option>
+            <option>Biophilia Tracker</option>
+            <option>Biophilia Guardian</option>
+            <option>Biophilia Intruder</option>
+            <option>Bioplasm NLS Technology</option>
+            <option>NLS Technology</option>
+            <option>Iridoscopio 12 MPX</option>
+            <option>Desintoxicador Iónico</option>
+            <option>Otro / insumos</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntenos para qué necesita el equipo y si ya tiene experiencia con este tipo de tecnología." required></textarea>
+        </div>
+
+        <button class="btn btn--primario" type="submit">Enviar solicitud</button>
+        <p class="formulario__nota">Al enviar se abrirá WhatsApp con su mensaje listo. También puede escribirnos directo al correo.</p>
+      </form>
+    </div>
+  </div>
+</section>

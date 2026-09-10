@@ -1,63 +1,71 @@
 # GII Médicas — Sitio web
 
-Sitio web estático de **GII Médicas**, mayorista en equipos médicos alternativos.
-Reemplaza el sitio anterior de `giimedicas.com` conservando su estructura
-(Inicio, Quiénes somos, Productos, Términos y condiciones, Contáctenos) con un
-diseño actual, responsive y optimizado para conversión por WhatsApp.
+Sitio web de **GII Médicas**, mayorista en equipos médicos alternativos.
+Diseño propio con identidad de marca (paleta extraída del logo, tipografía de
+sistema estilo Apple), estructurado en páginas reales por tema en vez de una
+sola landing page larga.
 
 Cobertura comercial: **toda Latinoamérica**, con envíos por transportadora y
 courier internacional.
 
+## Arquitectura — build mínimo sin framework
+
+El sitio sigue siendo HTML/CSS/JS puro, **sin dependencias npm**. Lo único que
+cambió es que ya no es una sola página: un script de Node (`build.js`, solo usa
+`fs`/`path` del propio Node) arma cada página final combinando un header y un
+footer compartidos con el contenido propio de cada una.
+
+```
+partials/header.html   Encabezado + nav + <main> de apertura (compartido)
+partials/footer.html   </main> + pie + botón flotante + <script> (compartido)
+content/*.html         Cuerpo de cada página, sin head/header/footer
+build.js               Arma cada página final y la escribe en /dist
+dist/                  Salida del build — esto es lo que se publica (generado, no se versiona)
+```
+
+Páginas: `inicio.html` → `index.html`, `productos.html`, `nosotros.html`,
+`como-comprar.html`, `terminos.html`, `contacto.html`. El nav activo
+(`is-activo`) se resuelve en el build según la página, no con JavaScript.
+
+### Compilar y ver en local
+
+```bash
+node build.js               # arma /dist
+cd dist && python -m http.server 8080   # o: npx serve dist
+```
+
+Luego abra <http://localhost:8080>.
+
 ## Contenido
 
 ```
-index.html                 Página única con todas las secciones
-styles.css                 Hoja de estilos (variables CSS, sin dependencias)
-script.js                  Menú móvil, filtros de catálogo, animaciones, formulario
-assets/favicon.svg         Ícono del sitio
-assets/img/                Fotografías de los equipos (1200x900, normalizadas)
-assets/img/banner/         Fotos completas del banner y sus fondos desenfocados
-assets/video/              Video de demostración y su imagen de portada
-robots.txt · sitemap.xml   SEO básico
-_headers                   Cabeceras de seguridad y caché (Netlify / Cloudflare Pages)
+styles.css                 Hoja de estilos (tokens de marca, sin dependencias)
+script.js                  Menú móvil, filtros de catálogo, ficha modal, formulario
+assets/img/logo-gii-medicas.png   Logo real de marca
+assets/img/*.jpg            Fotografía de catálogo (estudio, consistente entre los 11 equipos)
+assets/img/banner/          Imagen del hero de portada
+assets/img/archivo-proveedor/  Fotos originales del proveedor (referencia, ya no se usan)
+assets/video/                Video de demostración y su imagen de portada
+robots.txt · sitemap.xml    SEO básico (una URL por página)
+_headers                    Cabeceras de seguridad y caché (Cloudflare Pages)
 ```
 
 ## Características
 
-- **Sin dependencias ni build.** HTML, CSS y JavaScript puro. Se publica tal cual.
+- **Identidad de marca propia**: paleta petróleo/coral extraída del logo,
+  tipografía de sistema (`-apple-system`, igual que apple.com — sin webfont
+  externa), radios y sombras contenidos (sin píldoras ni glow de color).
 - **Responsive** desde 320 px hasta escritorio.
-- **Banner animado** en la portada: 2 láminas con rotación automática cada 6,5 s,
-  flechas, puntos, deslizamiento táctil y flechas del teclado. Se pausa al pasar el
-  cursor, al enfocar con teclado y con la pestaña en segundo plano.
-- **Video de demostración** con imagen de portada y `preload="none"`: el archivo solo
-  se descarga cuando el visitante pulsa reproducir.
-- **Catálogo filtrable** por categoría (NLS, biorresonancia, diagnóstico, terapia).
-- **Ficha de producto emergente:** al tocar cualquier equipo se abre un modal con la
-  fotografía ampliada, la explicación completa, las especificaciones y el enlace directo
-  a WhatsApp con el mensaje ya redactado para ese equipo.
+- **Hero de portada** con una sola imagen ancha (sin carrusel).
+- **Catálogo con formato de ficha técnica**: cada equipo tiene categoría, código
+  de referencia, specs clave en línea y una ficha completa en modal con tabla
+  de especificaciones real (no lista con viñetas).
+- **Video de demostración** con imagen de portada y `preload="none"`.
 - **Formulario que abre WhatsApp** con el mensaje ya redactado — no requiere backend.
-  Incluye selector de país (20 opciones) para calificar el lead desde el primer contacto.
-- **SEO:** metadatos Open Graph, datos estructurados `schema.org/Organization`,
-  `sitemap.xml` y `robots.txt`.
-- **Accesibilidad:** navegación por teclado, `aria-*` en el menú, el carrusel y el modal,
-  foco atrapado dentro de la ficha, textos alternativos descriptivos y soporte de
-  `prefers-reduced-motion`.
-- **Degradación elegante:** el contenido solo se oculta para animarse cuando hay
-  JavaScript (clase `js` en `<html>`); sin él, todo el texto se ve igualmente.
-
-## Imágenes
-
-Las fotografías originales tenían tamaños y encuadres dispares. Para el catálogo se
-normalizaron a 1200x900 (4:3) con fondo blanco y un realce suave de contraste. El póster
-del Bioplasm 10D se muestra recortado en la tarjeta y completo dentro de su ficha.
-
-En el banner las fotos **no se recortan**: se muestran enteras dentro de su columna, y el
-fondo se cubre con la misma imagen desenfocada y oscurecida (`fondo-*.jpg`). Así el
-equipo se ve completo en cualquier tamaño de pantalla, incluido el móvil, donde la foto
-pasa debajo del texto.
-
-Para regenerarlas tras reemplazar una foto, use `assets/img/` como destino y mantenga
-las proporciones indicadas.
+- **SEO**: metadatos Open Graph y `schema.org/Organization` por página,
+  `sitemap.xml` con una entrada por URL.
+- **Accesibilidad**: navegación por teclado, `aria-*` en el menú y el modal,
+  foco atrapado dentro de la ficha, `prefers-reduced-motion`.
 
 ## Contacto configurado
 
@@ -66,26 +74,16 @@ las proporciones indicadas.
 | Teléfono / WhatsApp | +57 311 689 1425 |
 | Correo | drchristianpedraza@gmail.com |
 
-Para cambiarlos, busque `573116891425` y `drchristianpedraza@gmail.com` en
-`index.html` y el número en `script.js` (constante `WHATSAPP`).
-
-## Ver en local
-
-```bash
-python -m http.server 8080   # o: npx serve .
-```
-
-Luego abra <http://localhost:8080>.
+Para cambiarlos, busque `573116891425` en `script.js` (constante `WHATSAPP`) y
+en `content/*.html`/`partials/*.html`, y `drchristianpedraza@gmail.com` en los
+mismos archivos.
 
 ## Publicar
 
-**GitHub Pages** — Settings → Pages → Source: `main` / carpeta raíz.
+**Cloudflare Pages** — build command: `node build.js` · directorio de salida: `dist`.
 
-**Netlify o Cloudflare Pages** — conecte el repositorio; sin comando de build,
-directorio de publicación: la raíz.
-
-Para usar el dominio `giimedicas.com`, agregue el registro DNS que indique el
-proveedor y cree un archivo `CNAME` con el dominio si publica en GitHub Pages.
+Para usar el dominio `giimedicas.com`, agregue el registro DNS que indique
+Cloudflare Pages.
 
 ## Aviso
 

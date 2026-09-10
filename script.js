@@ -40,6 +40,10 @@
     });
   }
 
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') cerrarMenu();
+  });
+
   /* ---------- Sombra de la barra al hacer scroll ---------- */
   var nav = document.getElementById('nav');
   if (nav) {
@@ -50,105 +54,9 @@
     window.addEventListener('scroll', actualizarNav, { passive: true });
   }
 
-  /* ==========================================================
-     Banner animado
-     ========================================================== */
-  var pista = document.getElementById('banner-pista');
-
-  if (pista) {
-    var laminas = Array.prototype.slice.call(pista.querySelectorAll('.banner__lamina'));
-    var puntos  = Array.prototype.slice.call(document.querySelectorAll('.banner__punto'));
-    var actual  = 0;
-    var temporizador = null;
-    var INTERVALO = 6500;
-
-    function mostrar(indice) {
-      actual = (indice + laminas.length) % laminas.length;
-
-      laminas.forEach(function (lamina, i) {
-        var activa = i === actual;
-        lamina.classList.toggle('es-activa', activa);
-        lamina.setAttribute('aria-hidden', String(!activa));
-        // Los enlaces de las láminas ocultas no deben recibir foco
-        lamina.querySelectorAll('a').forEach(function (a) {
-          a.tabIndex = activa ? 0 : -1;
-        });
-      });
-
-      puntos.forEach(function (punto, i) {
-        punto.classList.toggle('es-activo', i === actual);
-        punto.setAttribute('aria-selected', String(i === actual));
-      });
-    }
-
-    function avanzar()  { mostrar(actual + 1); }
-    function retroceder() { mostrar(actual - 1); }
-
-    function arrancar() {
-      if (sinMovimiento || laminas.length < 2) return;
-      detener();
-      temporizador = window.setInterval(avanzar, INTERVALO);
-    }
-    function detener() {
-      if (temporizador) { window.clearInterval(temporizador); temporizador = null; }
-    }
-    // Reinicia el conteo tras una interacción manual
-    function reiniciar() { detener(); arrancar(); }
-
-    var siguiente = document.getElementById('banner-next');
-    var anterior  = document.getElementById('banner-prev');
-
-    if (siguiente) siguiente.addEventListener('click', function () { avanzar(); reiniciar(); });
-    if (anterior)  anterior.addEventListener('click',  function () { retroceder(); reiniciar(); });
-
-    puntos.forEach(function (punto, i) {
-      punto.addEventListener('click', function () { mostrar(i); reiniciar(); });
-    });
-
-    var banner = document.querySelector('.banner');
-    if (banner) {
-      banner.addEventListener('mouseenter', detener);
-      banner.addEventListener('mouseleave', arrancar);
-      banner.addEventListener('focusin', detener);
-      banner.addEventListener('focusout', arrancar);
-
-      // Flechas del teclado
-      banner.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowRight') { avanzar(); reiniciar(); }
-        if (e.key === 'ArrowLeft')  { retroceder(); reiniciar(); }
-      });
-
-      // Deslizar en pantallas táctiles
-      var inicioX = 0, inicioY = 0;
-      banner.addEventListener('touchstart', function (e) {
-        inicioX = e.changedTouches[0].clientX;
-        inicioY = e.changedTouches[0].clientY;
-        detener();
-      }, { passive: true });
-
-      banner.addEventListener('touchend', function (e) {
-        var dx = e.changedTouches[0].clientX - inicioX;
-        var dy = e.changedTouches[0].clientY - inicioY;
-        // Solo cuenta como deslizamiento horizontal
-        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
-          if (dx < 0) avanzar(); else retroceder();
-        }
-        arrancar();
-      }, { passive: true });
-    }
-
-    // Pausa mientras la pestaña está en segundo plano
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) detener(); else arrancar();
-    });
-
-    mostrar(0);
-    arrancar();
-  }
-
   /* ---------- Filtro de productos ---------- */
   var filtros = document.getElementById('filtros');
-  var tarjetas = Array.prototype.slice.call(document.querySelectorAll('.producto'));
+  var tarjetas = Array.prototype.slice.call(document.querySelectorAll('.producto[data-categoria]'));
 
   if (filtros && tarjetas.length) {
     filtros.addEventListener('click', function (e) {
@@ -262,30 +170,6 @@
     });
   }
 
-  // Escape también cierra el menú móvil
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') cerrarMenu();
-  });
-
-  /* ---------- Enlace activo según la sección visible ---------- */
-  var enlaces = Array.prototype.slice.call(document.querySelectorAll('.menu a[href^="#"]'));
-  var secciones = enlaces
-    .map(function (a) { return document.querySelector(a.getAttribute('href')); })
-    .filter(Boolean);
-
-  if ('IntersectionObserver' in window && secciones.length) {
-    var observadorNav = new IntersectionObserver(function (entradas) {
-      entradas.forEach(function (entrada) {
-        if (!entrada.isIntersecting) return;
-        enlaces.forEach(function (a) {
-          a.classList.toggle('is-activo', a.getAttribute('href') === '#' + entrada.target.id);
-        });
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-
-    secciones.forEach(function (s) { observadorNav.observe(s); });
-  }
-
   /* ---------- Animación de entrada ---------- */
   var revelables = Array.prototype.slice.call(document.querySelectorAll('.revelar'));
 
@@ -318,7 +202,7 @@
       requeridos.forEach(function (id) {
         var campo = document.getElementById(id);
         var vacio = !campo.value.trim();
-        campo.style.borderColor = vacio ? '#d94848' : '';
+        campo.style.borderColor = vacio ? '#CA363A' : '';
         if (vacio && !faltante) faltante = campo;
       });
 
