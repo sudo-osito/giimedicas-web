@@ -59,6 +59,7 @@ p{margin:0 0 1.1em}
 ul{margin:0 0 1.1em;padding-left:1.15em}
 li{margin-bottom:.45em}
 svg{width:100%;height:100%}
+.iconos-defs{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
 
 :focus-visible{outline:2.5px solid var(--petrol-600);outline-offset:3px;border-radius:4px}
 
@@ -92,6 +93,11 @@ svg{width:100%;height:100%}
 .btn--linea{border-color:var(--gris-200);color:var(--petrol-700);background:#fff}
 .btn--linea:hover{border-color:var(--petrol-500);color:var(--petrol-800)}
 .btn svg{width:19px;height:19px;flex:none}
+.btn--grande{padding:19px 38px;font-size:1.05rem;font-weight:700;box-shadow:var(--sombra)}
+.btn--grande:hover{box-shadow:var(--sombra-alta)}
+.btn--grande svg{width:21px;height:21px}
+
+.cta-destacada{display:flex;justify-content:center;margin:48px 0 0}
 
 /* ---------- Navegación ---------- */
 .nav{
@@ -173,9 +179,12 @@ svg{width:100%;height:100%}
 .valor p{font-size:.95rem;color:var(--gris-500);margin-bottom:0}
 
 /* ---------- Quiénes somos ---------- */
-.sobre{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center}
+.sobre{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(36px,5vw,72px);align-items:center}
 .sobre__marco{margin:0;background:var(--hueso);border-radius:var(--radio-lg);padding:clamp(18px,2.4vw,28px)}
-.sobre__marco img{border-radius:var(--radio);width:100%;box-shadow:var(--sombra)}
+.sobre__marco img{
+  border-radius:var(--radio);width:100%;box-shadow:var(--sombra);
+  display:block;aspect-ratio:6/5;object-fit:cover;object-position:50% 30%;
+}
 .lista-check{list-style:none;padding:0;margin:0 0 30px}
 .lista-check li{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;font-size:.98rem}
 .lista-check svg{width:20px;height:20px;flex:none;color:var(--petrol-600);margin-top:2px}
