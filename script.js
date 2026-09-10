@@ -64,7 +64,7 @@
     var puntosHero  = Array.prototype.slice.call(document.querySelectorAll('.hero__punto'));
     var actualHero  = 0;
     var temporizadorHero = null;
-    var INTERVALO_HERO = 6500;
+    var INTERVALO_HERO = 3800;
 
     function mostrarHero(indice) {
       actualHero = (indice + laminasHero.length) % laminasHero.length;

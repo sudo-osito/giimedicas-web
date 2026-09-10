@@ -151,7 +151,20 @@ svg{width:100%;height:100%}
   position:relative;z-index:2;min-height:clamp(420px,58vh,600px);
   display:flex;align-items:center;padding-block:clamp(48px,7vw,80px);
 }
+.hero__rejilla--figura{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,56px);align-items:center;
+}
 .hero__contenido{max-width:560px;color:#fff}
+.hero__rejilla--figura .hero__contenido{max-width:none}
+
+.hero__figura{margin:0;display:flex;align-items:center;justify-content:center}
+.hero__figura img{
+  width:100%;height:auto;max-height:min(52vh,380px);object-fit:contain;
+  border-radius:18px;box-shadow:0 26px 60px rgba(2,17,32,.5);
+}
+.js .hero__figura{opacity:0;transform:translateY(24px) scale(.97)}
+.hero__lamina.es-activa .hero__figura{animation:hero-entrar-figura .8s cubic-bezier(.22,1,.36,1) .25s forwards}
+@keyframes hero-entrar-figura{to{opacity:1;transform:none}}
 .js .hero__contenido > *{opacity:0;transform:translateY(24px)}
 .hero__lamina.es-activa .hero__contenido > *{animation:hero-entrar .75s cubic-bezier(.22,1,.36,1) forwards}
 .hero__lamina.es-activa .hero__contenido > *:nth-child(1){animation-delay:.12s}
@@ -518,6 +531,8 @@ svg{width:100%;height:100%}
   .menu a{padding:13px 12px;font-size:.98rem}
   .hero__rejilla{min-height:clamp(380px,62vh,520px)}
   .hero__contenido{max-width:100%}
+  .hero__rejilla--figura{grid-template-columns:1fr;gap:24px}
+  .hero__figura img{max-height:30vh}
   .hero__flecha{width:42px;height:42px}
   .hero__flecha--prev{left:8px}
   .hero__flecha--next{right:8px}
@@ -545,4 +560,5 @@ svg{width:100%;height:100%}
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .js .revelar{opacity:1;transform:none}
   .js .hero__contenido > *{opacity:1;transform:none}
+  .js .hero__figura{opacity:1;transform:none}
 }
