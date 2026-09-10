@@ -83,7 +83,6 @@
 
   if (modal && tarjetas.length) {
     var mFoto      = document.getElementById('modal-foto');
-    var mMedia     = document.getElementById('modal-media');
     var mEnlaceFoto= document.getElementById('modal-enlace-foto');
     var mTitulo    = document.getElementById('modal-titulo');
     var mCategoria = document.getElementById('modal-categoria');
@@ -104,17 +103,10 @@
       var img     = tarjeta.querySelector('.producto__media img');
       var nombre  = tarjeta.querySelector('.producto__nombre').textContent.trim();
       var detalle = tarjeta.querySelector('.producto__detalle');
-      // Algunas tarjetas muestran un recorte y abren la imagen completa en la ficha
-      var otraFoto  = tarjeta.dataset.foto;
-      var contenida = tarjeta.dataset.fotoModo === 'contain' ||
-                      !!tarjeta.querySelector('.producto__media--contener');
-      var ruta = otraFoto || img.getAttribute('src');
+      var ruta = img.getAttribute('src');
 
       mFoto.src = ruta;
       mFoto.alt = img.getAttribute('alt') || nombre;
-      // Las fichas y capturas se muestran completas, no recortadas
-      mFoto.style.objectFit = contenida ? 'contain' : 'cover';
-      mMedia.classList.toggle('modal__media--contener', contenida);
       if (mEnlaceFoto) mEnlaceFoto.href = ruta;
 
       mTitulo.textContent = nombre;

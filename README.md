@@ -80,10 +80,19 @@ mismos archivos.
 
 ## Publicar
 
-**Cloudflare Pages** — build command: `node build.js` · directorio de salida: `dist`.
+El proyecto en Cloudflare es un **Worker con assets estáticos** (Workers Builds),
+no un Pages clásico — por eso corre `npx wrangler versions upload` en vez de un
+build command + output directory. `wrangler.jsonc` le dice a wrangler que suba
+`./dist` como sitio estático (sin código de Worker), y `package.json` expone
+`npm run build` → `node build.js`.
 
-Para usar el dominio `giimedicas.com`, agregue el registro DNS que indique
-Cloudflare Pages.
+Para que un deploy quede realmente en vivo en `giimedicas.com` (no solo como
+versión de preview), en el dashboard del Worker (Settings → Build):
+- **Production branch**: `max`.
+- **Build command**: `npm run build` (o `node build.js`).
+- **Deploy command** para la production branch: `npx wrangler deploy` — si queda
+  en `npx wrangler versions upload`, cada push solo genera una versión de
+  preview y el sitio publicado no se actualiza.
 
 ## Aviso
 

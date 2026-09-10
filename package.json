@@ -1,0 +1,8 @@
+{
+  "name": "giimedicas-web",
+  "private": true,
+  "description": "GII Médicas — sitio estático, sin dependencias. build.js arma /dist desde partials/ y content/.",
+  "scripts": {
+    "build": "node build.js"
+  }
+}
