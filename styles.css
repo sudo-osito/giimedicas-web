@@ -129,11 +129,11 @@ svg{width:100%;height:100%}
 /* ==========================================================
    Hero — carrusel de láminas
    ========================================================== */
-.hero{position:relative;overflow:hidden;background:var(--petrol-900);display:grid}
-.hero__pista{display:grid;grid-template-areas:"lamina"}
+.hero{position:relative;overflow:hidden;background:var(--petrol-900)}
+.hero__pista{position:relative;height:clamp(420px,58vh,600px)}
 
 .hero__lamina{
-  grid-area:lamina;position:relative;
+  position:absolute;inset:0;
   opacity:0;visibility:hidden;
   transition:opacity .9s ease,visibility .9s ease;
 }
@@ -148,14 +148,18 @@ svg{width:100%;height:100%}
   background:linear-gradient(100deg, rgba(6,20,28,.82) 0%, rgba(6,20,28,.5) 46%, rgba(6,20,28,.18) 78%);
 }
 .hero__rejilla{
-  position:relative;z-index:2;min-height:clamp(420px,58vh,600px);
-  display:flex;align-items:center;padding-block:clamp(48px,7vw,80px);
+  position:relative;z-index:2;height:100%;overflow:hidden;
+  display:flex;align-items:center;padding-block:clamp(32px,7vw,80px);
 }
 .hero__rejilla--figura{
   display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,56px);align-items:center;
+  padding-block:clamp(24px,5vw,52px);
 }
 .hero__contenido{max-width:560px;color:#fff}
 .hero__rejilla--figura .hero__contenido{max-width:none}
+.hero__rejilla--figura .hero__insignia{margin-bottom:12px}
+.hero__rejilla--figura .hero__contenido h2{font-size:clamp(1.7rem,3.2vw,2.5rem);margin-bottom:12px}
+.hero__rejilla--figura .hero__contenido p{margin-bottom:18px}
 
 .hero__figura{margin:0;display:flex;align-items:center;justify-content:center}
 .hero__figura img{
@@ -529,10 +533,10 @@ svg{width:100%;height:100%}
   }
   .menu.esta-abierto{display:flex}
   .menu a{padding:13px 12px;font-size:.98rem}
-  .hero__rejilla{min-height:clamp(380px,62vh,520px)}
+  .hero__pista{height:clamp(460px,68vh,560px)}
   .hero__contenido{max-width:100%}
-  .hero__rejilla--figura{grid-template-columns:1fr;gap:24px}
-  .hero__figura img{max-height:30vh}
+  .hero__rejilla--figura{display:flex}
+  .hero__figura{display:none}
   .hero__flecha{width:42px;height:42px}
   .hero__flecha--prev{left:8px}
   .hero__flecha--next{right:8px}
@@ -546,6 +550,7 @@ svg{width:100%;height:100%}
   .pie__rejilla{grid-template-columns:1fr}
   .btn{width:100%}
   .hero__acciones,.llamado__acciones,.video__acciones{flex-direction:column;width:100%}
+  .hero__pista{height:clamp(500px,78vh,620px)}
   .hero__flecha{display:none}
   .hero__puntos{bottom:14px}
   .hero__punto{width:26px}
