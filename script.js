@@ -5,7 +5,7 @@
   'use strict';
 
   var WHATSAPP = '573116891425';
-  var CORREO   = 'drchristianpedraza@gmail.com';
+  var CORREO   = 'soportealternativosmedicos@gmail.com';
 
   var sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

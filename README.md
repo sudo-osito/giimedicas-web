@@ -80,10 +80,10 @@ _headers                    Cabeceras de seguridad y caché (Cloudflare Pages)
 | Dato | Valor |
 |---|---|
 | Teléfono / WhatsApp | +57 311 689 1425 |
-| Correo | drchristianpedraza@gmail.com |
+| Correo | soportealternativosmedicos@gmail.com |
 
 Para cambiarlos, busque `573116891425` en `script.js` (constante `WHATSAPP`) y
-en `content/*.html`/`partials/*.html`, y `drchristianpedraza@gmail.com` en los
+en `content/*.html`/`partials/*.html`, y `soportealternativosmedicos@gmail.com` en los
 mismos archivos.
 
 ## Publicar

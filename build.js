@@ -98,13 +98,13 @@ function buildHead(page) {
   "description": "Mayorista en equipos médicos alternativos con importación directa desde Estados Unidos y China.",
   "url": "${SITE_URL}/",
   "logo": "${SITE_URL}/assets/img/logo-gii-medicas.png",
-  "email": "drchristianpedraza@gmail.com",
+  "email": "soportealternativosmedicos@gmail.com",
   "telephone": "+573116891425",
   "areaServed": ["CO","MX","PE","CL","AR","EC","BO","PA","CR","GT","DO","UY","PY","VE","SV","HN","NI"],
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+573116891425",
-    "email": "drchristianpedraza@gmail.com",
+    "email": "soportealternativosmedicos@gmail.com",
     "contactType": "sales",
     "availableLanguage": ["es"]
   }
